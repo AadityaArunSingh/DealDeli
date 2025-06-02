@@ -47,7 +47,7 @@ This project uses Docker Compose to orchestrate all microservices in isolated co
 
 ```bash
 # Step 1: Clone the repository
-git clone https://github.com/prajwalram2698/DealDeli.git
+git clone https://github.com/AadityaArunSingh/DealDeli.git
 cd DealDeli-final
 
 # Step 2: configure the database settings in the files according to your host and user credentials from MySql server 
