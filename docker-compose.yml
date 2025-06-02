@@ -1,0 +1,67 @@
+version: '3.9'
+
+services:
+  mysql_container:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: UoS@2025
+      MYSQL_DATABASE: DealDeli_data
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./databases/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - dealdeli-net
+
+
+  user_microservice:
+    build: ./user_microservice
+    ports:
+      - "5001:5001"
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    depends_on:
+      - mysql_container
+    networks:
+      - dealdeli-net
+
+  price_microservice:
+    build: ./price_microservice
+    ports:
+      - "5002:5002"
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: UoS@2025
+      MYSQL_HOST: mysql_container
+      MYSQL_DATABASE: DealDeli_data
+    networks:
+      - dealdeli-net
+
+
+  analytics_microservice:
+    build: ./analytics_microservice
+    ports:
+      - "5003:5003"
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    depends_on:
+      - mysql_container
+    networks:
+      - dealdeli-net
+
+  frontend_microservice:
+    build: ./frontend_microservice
+    ports:
+      - "5501:8000"
+    networks:
+      - dealdeli-net
+
+networks:
+  dealdeli-net:
