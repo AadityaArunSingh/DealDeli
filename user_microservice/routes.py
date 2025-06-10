@@ -54,7 +54,11 @@ def login_user():
     if not user or not user.check_password(password):
         return jsonify({"message": "Invalid email or password"}), 400
 
-    return jsonify({"message": f"Welcome {user.first_name} {user.last_name}!"}), 200
+    return jsonify({
+        "message": f"Welcome {user.first_name} {user.last_name}!",
+        "first_name": user.first_name,
+        "last_name": user.last_name
+    }), 200
 
 # ===============================
 # Password Reset Route
