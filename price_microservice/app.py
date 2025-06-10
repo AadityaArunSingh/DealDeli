@@ -1,7 +1,7 @@
 # first source venv/bin/activate
 # flask --app app run
 
-from flask import Flask, jsonify, request,render_template
+from flask import Flask, jsonify, request
 import json
 import os
 from flask_sqlalchemy import SQLAlchemy
@@ -27,9 +27,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-@app.route("/index")
-def index():
-    return render_template("index.html")
 
 @app.route("/")
 def db_check():
