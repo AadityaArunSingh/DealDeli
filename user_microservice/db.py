@@ -18,7 +18,8 @@ def init_db():
     user_con.commit()
     user_con.close()
 
-def get_db_user_conection():
+def get_db_user_connection():
+    """Create and return a connection to the user database."""
     try:
         conn = sqlite3.connect(DATABASE)
         conn.row_factory = sqlite3.Row
