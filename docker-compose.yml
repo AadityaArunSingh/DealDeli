@@ -5,7 +5,7 @@ services:
     image: mysql:8.0
     container_name: mysql_container
     environment:
-      MYSQL_ROOT_PASSWORD: UoS@2025
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: DealDeli_data
     ports:
       - "3306:3306"
@@ -22,8 +22,8 @@ services:
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
-      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: DealDeli_data
     depends_on:
       - mysql_container
     networks:
@@ -35,7 +35,7 @@ services:
       - "5002:5002"
     environment:
       MYSQL_USER: root
-      MYSQL_PASSWORD: UoS@2025
+      MYSQL_PASSWORD: password
       MYSQL_HOST: mysql_container
       MYSQL_DATABASE: DealDeli_data
     networks:
@@ -47,10 +47,10 @@ services:
     ports:
       - "5003:5003"
     environment:
-      MYSQL_HOST: mysql
+      MYSQL_HOST: mysql_container
       MYSQL_USER: root
-      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: DealDeli_data
     depends_on:
       - mysql_container
     networks:

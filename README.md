@@ -56,6 +56,19 @@ cd DealDeli-final
 docker-compose up --build
 ```
 
+### Environment Variables
+
+The microservices expect the following variables when running via
+`docker-compose`. Default values are shown in parentheses:
+
+- `MYSQL_HOST` (`mysql_container`)
+- `MYSQL_USER` (`root`)
+- `MYSQL_PASSWORD` (`password`)
+- `MYSQL_DATABASE` (`DealDeli_data`)
+
+These are passed automatically in `docker-compose.yml` but can be
+overridden if needed.
+
 Once running, the services will be available at:
 
 | Service                | URL                                |
