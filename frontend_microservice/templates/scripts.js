@@ -12,15 +12,16 @@ if (loginForm) {
       body: JSON.stringify({ email, password })
     })
     .then(response => response.json().then(data => ({ status: response.status, body: data })))
-    .then(({ status, body }) => {
-      if (status === 200) {
-        // Store user's first name in localStorage
-        localStorage.setItem('firstName', body.first_name || '');
-        alert(`Login successful! Welcome, ${body.first_name || 'User'}!`);
-        window.location.href = 'index.html';
-      } else {
-        alert(body.message || 'Login failed.');
-      }
+      .then(({ status, body }) => {
+        if (status === 200) {
+          // Store user's name in localStorage
+          localStorage.setItem('firstName', body.first_name || '');
+          localStorage.setItem('lastName', body.last_name || '');
+          alert(`Login successful! Welcome, ${body.first_name || 'User'}!`);
+          window.location.href = 'index.html';
+        } else {
+          alert(body.message || 'Login failed.');
+        }
     })
     .catch(error => {
       console.error('Login error:', error);
