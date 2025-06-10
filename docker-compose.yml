@@ -21,7 +21,7 @@ services:
       - "5001:5001"
     environment:
       <<: *mysql_env
-      MYSQL_HOST: mysql
+      MYSQL_HOST: mysql_container
       MYSQL_USER: root
     depends_on:
       - mysql_container
@@ -47,8 +47,9 @@ services:
       - "5003:5003"
     environment:
       <<: *mysql_env
-      MYSQL_HOST: mysql
+      MYSQL_HOST: mysql_container
       MYSQL_USER: root
+      MYSQL_PASSWORD: UoS@2025
     depends_on:
       - mysql_container
     networks:

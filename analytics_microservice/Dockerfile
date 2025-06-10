@@ -28,6 +28,6 @@ EXPOSE 5003
 #     MYSQL_DATABASE=dealdeli_data
 
 # Run the application
-CMD ["flask", "run", "--port=5003"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5003"]
 
 
