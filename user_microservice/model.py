@@ -1,4 +1,4 @@
-from db import get_db_user_conection
+from db import get_db_user_connection
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class User:
@@ -11,7 +11,7 @@ class User:
 
     @staticmethod
     def find_by_email(email):
-        conn = get_db_user_conection()
+        conn = get_db_user_connection()
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM users WHERE email = ?', (email,))
         row = cursor.fetchone()
@@ -21,7 +21,7 @@ class User:
         return None
 
     def save_to_db(self):
-        conn = get_db_user_conection()
+        conn = get_db_user_connection()
         cursor = conn.cursor()
         if self.id:  # Update existing user
             cursor.execute('UPDATE users SET first_name=?, last_name=?, email=?, password=? WHERE id=?',
