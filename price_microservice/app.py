@@ -16,7 +16,7 @@ CORS(app, origins=["http://localhost:5501"])
 
 # Load from env or fallback
 user = os.getenv("MYSQL_USER", "root")
-password = quote_plus(os.getenv("MYSQL_PASSWORD", "UoS@2025"))  # Escape special chars
+password = quote_plus(os.getenv("MYSQL_PASSWORD") or os.getenv("MYSQL_ROOT_PASSWORD", ""))  # Escape special chars
 host = os.getenv("MYSQL_HOST", "mysql_container")
 db_name = os.getenv("MYSQL_DATABASE", "dealdeli_data")
 

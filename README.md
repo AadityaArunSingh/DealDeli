@@ -50,7 +50,9 @@ This project uses Docker Compose to orchestrate all microservices in isolated co
 git clone https://github.com/AadityaArunSingh/DealDeli.git
 cd DealDeli-final
 
-# Step 2: configure the database settings in the files according to your host and user credentials from MySql server 
+# Step 2: Copy `.env.example` to `.env` and update it with your MySQL credentials
+cp .env.example .env
+# Edit `.env` to set `MYSQL_ROOT_PASSWORD` and `MYSQL_PASSWORD`
 
 # Step 3: Start all services
 docker-compose up --build
